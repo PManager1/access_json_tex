@@ -21,11 +21,22 @@
     });
 
 
+//Setting up the tone. 
 
+var ajax_url = "/ws/ws_ext?&servlet=GetProjectGroupsJson&";
+
+// extracting token from top url
+
+	var vars = [], hash;
+    var url_holder = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+
+	var token_holder = url_holder[1];
+
+	var textures_url = ajax_url+token_holder;
 
 
     $.ajax({
-        url: "/ws/ws_ext?&servlet=GetProjectGroupsJson&token=1679461311",
+        url: "textures_url",
         type: "get",
 		dataType: "json",
 		success: function (data) {
