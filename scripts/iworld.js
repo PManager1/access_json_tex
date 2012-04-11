@@ -1,4 +1,4 @@
-/* Author: Hemant Kumar Singh
+/* Author: JP
  */ (function () {
     var list = "";
     var template1 = $("#template1").html(),
@@ -20,12 +20,19 @@
         //console.log($(this));
     });
 
+
+
+
+
     $.ajax({
-        url: "http://textures.corp.apple.com:14040/ws/ws_ext?&servlet=GetProjectGroupsJson&token=1679461311",
+        url: "/ws/ws_ext?&servlet=GetProjectGroupsJson&token=1679461311",
         type: "get",
-		dataType: "jsonp",
-		success: function (data) {console.log(data)},
-		//error: AjaxFailed
+		dataType: "json",
+		success: function (data) {
+			alert("response=success"); 
+		//	console.log(data)
+			},
+	
 	
 		error: function(response) 
 		              { 
@@ -37,9 +44,21 @@
 		    
 		          },
 		
-	//	error(XMLHttpRequest, textStatus, errorThrown)
-		
+				// complete: function(e, XHR, options) {
+				// 			if (XHR.status == 200) { // success
+				// 			} elseif (XHR.status == 500) { // Internal Server Error
+				// 			} elseif (XHR.status == 404) { // File Not found
+				// 			}
+			
 		});
+
+
+		$(document).ajaxError(function(e, xhr, settings, exception) {
+		alert('error in: ' + settings.url + ' \\n'+'error:\\n' + exception);
+		});
+
+
+
 
 
 		    function AjaxSucceeded(data) {
