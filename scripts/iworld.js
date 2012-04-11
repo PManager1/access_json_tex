@@ -22,14 +22,20 @@
 
     $.ajax({
         url: "http://textures.corp.apple.com:14040/ws/ws_ext?&servlet=GetProjectGroupsJson&token=1679461311",
-        dataType: "json",
+        type: "get",
+		dataType: "jsonp",
 		success: function (data) {console.log(data)},
 		//error: AjaxFailed
 	
 		error: function(response) 
 		              { 
-		               alert(response); // alert(response.status); 
-		              },
+			
+		              alert("response="+response); 
+					  alert("response.status="+response.status); 
+					  alert("response.textStatus="+response.textStatus); 
+					  alert("response.errorThrown="+response.errorThrown); 
+		    
+		          },
 		
 	//	error(XMLHttpRequest, textStatus, errorThrown)
 		
