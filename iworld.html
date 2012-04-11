@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html manifest="iworld.manifest" lang="en-us">
+<head>
+<title>iWorld 0.9 beta</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="content-script-type" content="text/javascript">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+	<link  href="stylesheets/iworld.css" media="all" rel="stylesheet" />
+	<link href="http://jqueryui.com/themes/base/jquery.ui.all.css" rel="stylesheet" />
+	<link  href="stylesheets/main.css" media="all" rel="stylesheet" />
+</head>
+<body>
+
+	<!-- BEGIN wrapper -->
+	<div id="wrapper">
+
+		<div id="header">
+			<div id="toolbar">
+				<div id="buttonbar" class="buttons">
+					<div id="newproject" class="button">
+						<div class="buttonPlus">Expand</div>
+					</div>
+					<div id="workbench" class="button">
+						<div id="buttonEdit">Workbench</div>
+					</div>
+					<div id="preview" class="button">
+						<div id="buttonPreview">Preview</div>
+					</div>
+					<div id="download" class="button">
+						<div id="buttonDownload">Download</div>
+					</div>
+					<div id="assignees" class="button">
+						<div id="buttonAssignees">Assignees</div>
+					</div>
+					<div id="completestep" class="button">
+						<div id="buttonComplete">Complete</div>
+					</div>
+					<div id="choosecolumn" class="button">
+						<div id="buttonEdit">Choose Columns</div>
+					</div>
+					</div>					
+					<div id="morebutton" class="button">
+						<div id="buttonGears"></div>
+					</div>
+				</div>
+				<div id="login">
+					<div id="signout" class="signout">
+						<div>Christof Pintaske</div>
+					</div>
+				</div>
+				<div id="search">
+					<input id="searchbox" placeholder="Search" autosave="iWorld" results="5" type="search">
+					<div id="search_spinner"></div>
+				</div>
+				<div id="search_results"></div>
+			</div>
+		</div>
+
+		<div id="container">
+			<div id="leftColumn">
+				<div id="folderlist" class="folder-list">
+					<ul>
+						<li id="Inbox-filter" name="Inbox" class="folder-item active"><div class="filterInbox">Inbox</div></li>
+						<li id="All-filter" name="All" class="folder-item"><div class="filterAll">All</div></li>
+					</ul>
+				</div>
+			</div>
+			<div id="rightColumn">
+				<div id="projectgroupsheader" class="projectgroupsheader">
+					<div class="col label-name" name="name">Name</div>
+					<div class="col label-workgroup" name="workgroup">Workgroup</div>
+					<div class="col label-category" name="category">Category</div>
+					<div class="col label-region" name="region">Region</div>
+					<div class="col label-created desc" name="date">Created</div>
+					<div class="col label-duedate" name="duedate">Due</div>
+					<div class="col label-id" name="id">ID</div>
+					<div class="col label-progress" name="progress">Progress</div>
+					<div class="col label-wordcount" name="wordcount">Words</div>
+					<div class="col label-status" name="status"></div>
+					<div class="col label-users" name="users">Users</div>
+					<div class="col label-workflow" name="workflow">Workflow</div>
+				</div>
+					<script type="template" id="header-template">
+						<div class="col label-{{header-name}}" name="{{header-name}}">{{header-text}}</div>
+					</script>				
+				<div id="projectgroups" class="projectgroups" style="height: 528px;">
+					<script type="template" id="template1">
+					<div class="projectgroup" id="54472_projectgroup">
+						<div class="row" rowid="{{projects}}" rowtype="projectgroup">
+							<div class="col name">{{name}}</div>
+							<div class="col workgroup">{{workgroup}}</div>
+							<div class="col category">{{category}}</div>
+							<div class="col region">{{region}}</div>
+							<div class="col date">{{create_date}}</div>
+							<div class="col duedate" style="color: rgb(255, 32, 32);">{{due_date}}</div>
+							<div class="col id">54472</div>
+							<div class="col progress" value="3">
+								<div class="progress-bar-white"></div>
+								<div class="progress-bar-blue" style="width: {{progress}}px;"></div>
+							</div>
+							<div class="col wordcount">{{words}}</div>
+							<div class="col status" status="{{status}}"></div>
+							<div class="col users">
+								<div class="usertype created" usertype="MobileMe_ProjectManager">{{users}}</div>
+							</div>
+							<div class="col workflow">{{workflow}}</div>
+						</div>
+					</div>
+					 </script>
+				</div>
+
+					<script type="template" id="template2">	
+						<div class="projects" id="35824_projects">
+							<div class="project" id="148584_project">
+								<div class="row" rowid="{{tasks}}" rowtype="project">
+									<div class="col name">
+										<div class="ko_KR">{{name}}</div>
+									</div>
+							<div class="col workgroup"></div>
+							<div class="col category"></div>
+							<div class="col region"></div>
+							<div class="col date"></div>								
+									<div class="col duedate">{{due_date}}</div>
+									<div class="col progress" value="">
+										<div class="progress-bar-white"></div>
+										<div class="progress-bar-blue" style="width: {{progress}}px;"></div>
+									</div>
+									<div class="col wordcount">{{wordcount}}</div>
+									<div class="col status" status="{{status}}"></div>
+								</div>
+							</div>
+						</div>		
+					</script>	
+					
+					<script type="template" id="template3">
+						<div class="tasks" id="148584_tasks">
+							<div class="task" id="1286702_task">
+								<div class="row" rowid="1286702" rowtype="task">
+									<div class="col name fileicon" filename="{{filename}}">{{fileicon}}</div>
+							<div class="col workgroup"></div>
+							<div class="col category"></div>
+							<div class="col region"></div>
+							<div class="col date"></div>																
+									<div class="col duedate">{{due_date}}</div>
+									<div class="col id">{{id}}</div>
+									<div class="col progress" value="">
+										<div class="progress-bar-white"></div>
+										<div class="progress-bar-blue" style="width: {{progress}}px;"></div>
+									</div>
+									<div class="col wordcount">{{wordcount}}</div>
+									<div class="col status" status="{{status}}"></div>
+									<div class="col users">
+										<div class="usertype claimed" usertype="Administrator">{{users}}</div>
+									</div>
+									<div class="col workflow" steptype="Human">{{workflow}}</div>
+								</div>
+							</div>
+						</div>
+					</script>	
+
+				<div id="dividerbar">
+					<div id="handle"></div>
+					<div id="slider" style="height: 8px; top: -8px; position: relative;"></div>
+				</div>
+				<div id="infopane" style="height: 248px;">
+					<div id="tabs" class="tabs">
+						<div data-id="summarytab" class="tab selected">
+							<div id="tabSummary">Summary</div>
+						</div>
+						<div data-id="scopingtab" class="tab">
+							<div id="tabScoping">Scoping</div>
+						</div>
+						<div data-id="historytab" class="tab">
+							<div id="tabHistory">History</div>
+						</div>
+					</div>
+					<div id="summarytab" class="project">
+						<div id="project" class="section">
+							<div class="textfield half">
+								<div class="key">Project Name</div>
+								<div class="value">testMobileMeWF_moravia</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Creation Date</div>
+								<div class="value">10/03/11 6:49 PM</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Project ID</div>
+								<div class="value">45379</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Due Date</div>
+								<div class="value">10/04/11 10:00 AM</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Workgroup</div>
+								<div class="value">MobileMe</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Created by</div>
+								<div class="value">Pankaj Sharma</div>
+							</div>
+							<div class="textfield ">
+								<div class="key">Description</div>
+								<div class="value">testMobileMeWF_moravia</div>
+							</div>
+						</div>
+						<div id="projectattributes" class="section projectattributes"></div>
+						<div id="taskattributes" class="section taskattributes"></div>
+					</div>
+
+					<div id="scopingtab" class="project">
+						<div id="project" class="section">
+							<div class="textfield half">
+								<div class="key">Project Name</div>
+								<div class="value">Project2</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Creation Date</div>
+								<div class="value">28/03/11 6:49 PM</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Project ID</div>
+								<div class="value">45379</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Due Date</div>
+								<div class="value">10/04/11 10:00 AM</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Workgroup</div>
+								<div class="value">MobileMe</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Created by</div>
+								<div class="value">Hemant Singh</div>
+							</div>
+							<div class="textfield ">
+								<div class="key">Description</div>
+								<div class="value">testMobileMeWF_moravia</div>
+							</div>
+						</div>
+						<div id="projectattributes" class="section projectattributes"></div>
+						<div id="taskattributes" class="section taskattributes"></div>
+					</div>
+
+					<div id="historytab" class="project">
+						<div id="project" class="section">
+							<div class="textfield half">
+								<div class="key">Project Name</div>
+								<div class="value">My iword project</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Creation Date</div>
+								<div class="value">10/03/11 6:49 PM</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Project ID</div>
+								<div class="value">45379</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Due Date</div>
+								<div class="value">10/04/11 10:00 AM</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Workgroup</div>
+								<div class="value">MobileMe</div>
+							</div>
+							<div class="textfield half">
+								<div class="key">Created by</div>
+								<div class="value">Sayed</div>
+							</div>
+							<div class="textfield ">
+								<div class="key">Description</div>
+								<div class="value">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+							</div>
+						</div>
+						<div id="projectattributes" class="section projectattributes"></div>
+						<div id="taskattributes" class="section taskattributes"></div>
+					</div>	
+
+
+
+				</div>
+
+
+
+			</div>
+
+		</div>
+
+
+
+		<div id="footer">
+			<div id="addfolder">			
+			</div>
+			<ul class="smartmenu">
+				<li>Smart Folder</li>
+				<li>Duplicate Folder</li>
+				<li>Remove Smart Folder</li>
+			</ul>	
+			<div id="editfolder"></div>
+			<div id="itemcounter">11 items</div>
+		</div>
+
+	</div>
+	<!-- END wrapper -->
+
+	<div id="huds"></div>
+
+	<div id="panes" style="visibility: hidden;"></div>
+<div id="addsmartfoldersheetdialog" class="dialog">
+<form action="#" id="smart-folder-form">
+	<h1>Add Smart Folder</h1>
+	<div class="dialogerrormessage" id="sheeterrormessage"><ul></ul>
+		
+	</div>
+	<p>Enter a name for your new Smart Folder and specify any filter criteria.</p>
+
+	<div class="name">	
+		<label for="name">Name</label>
+		<input id="smartfoldername" type="text" name="smartfoldername" value="" />
+	</div>	
+
+	<div class="filter">
+		<label for="filter">Filter</label>
+		<div class="dialogoptiongroup">
+			<input type="checkbox" id="sheetprojecttype" name="sheetprojecttype" /><span> Projects</span>
+			<select id="smartfoldertype" disabled="" name="smartfoldertype">
+				<option value="created">created</option>
+				<option value="assigned">assigned</option>
+				<option value="claimed">claimed</option>
+			</select>
+
+			<span id="sheetDialogBy">by </span>
+			<select id="smartfolderuser" disabled="" name="smartfolderuser">
+				<option value="5129">myself</option>
+				<option value="3737">1-stop</option>
+				<option value="4602">Abhishek Kare</option>	
+			</select>
+		</div>
+			<div class="dialogoptiongroup">
+		<input type="checkbox" id="sheetlanguage" name="sheetlanguage"><span> Projects in </span>
+		<select id="smartfolderlanguage" disabled="" name="smartfolderlanguage">
+			<option value="1322">Afrikaans</option>
+			<option value="1281">Arabic</option>
+			<option value="1641">Catalan</option>
+			<option value="1017">Chinese (PRC)</option>
+		</select>
+	</div>
+
+	<div class="dialogoptiongroup">
+		<input type="checkbox" id="sheetstatus"><span> Projects that are </span>
+		<select id="smartfolderstatus" disabled="">
+			<option value="Active">active</option>
+			<option value="Completed">completed</option>
+			<option value="Cancelled">cancelled</option>
+		</select>
+	</div>
+	</div>		
+	<div class="dialogbuttons">
+		<button class="dialogbutton">Cancel</button>
+		<button class="dialogbutton default">Save</button>
+	</div>
+</form>
+</div>
+<script src="scripts/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>	
+
+	<script src="scripts/iworld.js"></script>
+
+
+</body></html>

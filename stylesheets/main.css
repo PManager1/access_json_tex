@@ -1,0 +1,123 @@
+/** smart folder **/ 
+
+#addfolder{
+	position:relative;
+}
+
+ul.smartmenu {
+    position: absolute;
+    bottom: 24px;
+    left:22px;
+    z-index:9999;
+    display: none;
+    width: 200px;
+    border: 1px solid #AAA;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 20px #888;
+    -moz-box-shadow: 2px 2px 20px #888;
+    box-shadow: 2px 2px 20px #888;
+    background-color: white;
+    list-style-type: none;
+    margin: 0px;
+    padding: 1px 0px 4px 0px;
+}
+    ul.smartmenu li{
+    margin-bottom:2px;
+    padding:4px 10px;
+    } 
+
+    ul.smartmenu li:hover{
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.0, #8698AB), color-stop(1.0, #697E94));    
+    background: -webkit-linear-gradient(top, #8698AB 0%, #697E94 100%);
+    background: -moz-linear-gradient(top, #8698AB 0%, #697E94 100%);
+    background: -o-linear-gradient(top, #8698AB 0%, #697E94 100%);
+    background: -ms-linear-gradient(top, #8698AB 0%, #697E94 100%);
+    background: linear-gradient(top, #8698AB 0%, #697E94 100%);
+    padding:3px 10px;
+    border-bottom: 1px solid #526475;
+    border-top: 1px solid #6D7B8A;
+    color: white;
+    cursor:pointer;
+    }	
+
+
+
+#addsmartfoldersheetdialog{
+    position:relative;
+    display:none;
+    width:390px;
+    background: -webkit-linear-gradient(top, #B3B3B3 0%, rgba(232, 232, 232, 0.95) 60%, rgba(232, 232, 232, 0.95) 100%);
+    background: -moz-linear-gradient(top, #B3B3B3 0%, rgba(232, 232, 232, 0.95) 60%, rgba(232, 232, 232, 0.95) 100%);
+    background: -o-linear-gradient(top, #B3B3B3 0%, rgba(232, 232, 232, 0.95) 60%, rgba(232, 232, 232, 0.95) 100%);
+    background: -ms-linear-gradient(top, #B3B3B3 0%, rgba(232, 232, 232, 0.95) 60%, rgba(232, 232, 232, 0.95) 100%);
+    background: linear-gradient(top, #B3B3B3 0%, rgba(232, 232, 232, 0.95) 60%, rgba(232, 232, 232, 0.95) 100%);
+    border: none;
+    right: auto;
+    padding: 20px;
+    border: 1px solid #90959B;
+    -webkit-box-shadow: #525252 0px 2px 8px;
+    -moz-box-shadow: #525252 0px 2px 8px;
+    box-shadow: #525252 0px 2px 8px;
+}
+
+#smart-folder-form{
+    display:block;
+}
+#smart-folder-form .name,#smart-folder-form .filter{
+    float:left;
+    margin:2px 0;
+}
+#smart-folder-form  label {
+    float:left;
+    width:80px;
+}
+
+ #smart-folder-form input[type="text"] {
+    float:left;
+    padding:2px; 
+}
+#smart-folder-form .dialogoptiongroup{
+    margin-left:80px;
+}
+#smart-folder-form .dialogbuttons{
+    float:right;
+    margin-top:15px;
+}
+#smart-folder-form .filter{
+    padding-bottom:15px;
+    border-bottom:1px solid #aaa;   
+}
+#sheeterrormessage ul{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+/** column resizable **/
+
+
+/*
+#projectgroupsheader .col.resizing {
+    cursor: col-resize;
+}
+
+
+#projectgroupsheader .col:hover {
+    cursor: col-resize;
+}*/
+
+/** expand/collapse ALL *****/
+
+.buttonPlus {
+    background: url("../images/icon_plus.png") no-repeat;
+    height: 15px;
+    margin: 1px 0 0;
+    padding: 0 0 0 16px;
+}
+.buttonMinus {
+    background: url("../images/icon_minus.png") no-repeat;
+    height: 15px;
+    margin: 1px 0 0;
+    padding: 0 0 0 14px;
+}

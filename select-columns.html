@@ -1,0 +1,228 @@
+	<style>
+
+		.select-options{
+			width: 848px;	
+		    background: #D6DDE5;			
+			padding:20px;
+			float:left;
+		}
+		.select-options > div {
+		    border: none;
+		    color: #666666;
+		    float: left;
+		    font-size: 0.8em;
+		    line-height: 2.4em;
+		    margin: 0;
+		    padding-left: 5px;
+		    resize: none;
+		    width: 373px;
+		    height:400px;
+		}
+		.select-options select {
+		    height: 100%;
+		    padding: 4px;
+		    width: 100%;
+		}
+		.select-options option {
+		    padding: 2px 0;
+		}		
+		.select-options > div:nth-child(2n+2){
+			width:40px;
+		}
+		.select-options > div:nth-child(2n+2) img{
+			display:block;
+			margin: 0 10px 20px 10px;
+			cursor:pointer;
+		}
+		.select-options > div:nth-child(2n+2) img:first-child{
+			margin-top:150px;
+		}
+		.select-options	button{
+			margin-top:10px;
+		}
+
+	</style>
+
+	<div class="select-options">
+		<div>
+			 <select multiple id="all">  
+				  <option value="04-4">Project Group #</option>
+				  <option value="21-21">Cost Model</option>
+				  <option value="22-22">Quality Model</option>
+				  <option value="23-23">Creator</option>
+				  <option value="24-24">Client</option>
+				  <option value="26-26">Quote</option>
+				  <option value="27-27">Errors</option>
+				  <option value="28-28">AOS Status</option>
+				  <option value="29-29">AppleCare Cost Center</option>
+				  <option value="30-30">AppleUniversity Cost Center</option>
+				  <option value="31-31">HR Cost Center</option>
+				  <option value="32-32">INTEGRATION_APPLICATION_ID</option>
+				  <option value="33-33">INTEGRATION_TRANSLATION_JOB_ID</option>
+				  <option value="34-34">Marcom CD/Editor Brief</option>
+				  <option value="35-35">Marcom CD/Editor Brief (HTML)</option>
+				  <option value="36-36">Marcom Channel</option>
+				  <option value="37-37">Marcom Channel Audience</option>
+				  <option value="38-38">Marcom Channel Deliverable Type</option>
+				  <option value="39-39">Marcom Channel Project Category</option>
+				  <option value="40-40">Marcom Education Audience</option>
+				  <option value="41-41">Marcom Education Project Category</option>
+				  <option value="42-42">Marcom Execution Type</option>
+				  <option value="43-43">Marcom Interactive Audience</option>
+				  <option value="44-44">Marcom Interactive Deliverable Type</option>
+				  <option value="45-45">Marcom Motion Graphics Audience</option>
+				  <option value="46-46">Marcom Motion Graphics Deliverable Type</option>
+				  <option value="47-47">Marcom Motion Graphics Project Category</option>
+				  <option value="48-48">Marcom Motion Graphics/Video Project Type</option>
+				  <option value="49-49">Marcom Preview Server</option>
+				  <option value="50-50">Marcom Product</option>
+				  <option value="51-51">Marcom Project Reference Number</option>
+				  <option value="52-52">Marcom Retail Audience</option>
+				  <option value="53-53">Marcom Retail Deliverable Type</option>
+				  <option value="54-54">Marcom Retail Project Category</option>
+				  <option value="55-55">Marcom Team Requesting</option>
+				  <option value="56-56">Marcom Validation Due Date</option>
+				  <option value="57-57">Marcom X-Functional Audience</option>
+				  <option value="58-58">Marcom X-Functional Project Category</option>
+				  <option value="59-59">MobileMe Project Category</option>
+				  <option value="60-60">OnlineStore Category</option>
+				  <option value="61-61">OnlineStore Team</option>
+				  <option value="62-62">Other Instructions</option>
+				  <option value="63-63">Priority Level</option>
+				  <option value="64-64">Project Category</option>
+				  <option value="65-65">Radar</option>
+				  <option value="66-66">Radar Number</option>
+				  <option value="67-67">Reference Files</option>
+				  <option value="68-68">Region</option>
+				  <option value="69-69">Retail PO</option>
+				  <option value="70-70">RetailStore Audience</option>
+				  <option value="71-71">RetailStore Audiences</option>
+				  <option value="72-72">RetailStore Due Date</option>
+				  <option value="73-73">RetailStore Group</option>
+				  <option value="74-74">RetailStore Initiative</option>
+				  <option value="75-75">RetailStore Requested By</option>
+				  <option value="76-76">Scope Report</option>
+				  <option value="77-77">TestAppleCare</option>
+				  <option value="78-78">TestMarcom</option>
+				  <option value="79-79">Translation-specific Instructions</option>
+				  <option value="80-80">Turnaround Expectation</option>
+				  <option value="81-81">iCloud Code Name</option>
+				  <option value="82-82">iCloud PO Number</option>
+			 </select>  
+		</div>
+		<div>
+			<img src="http://ws-asuat01.corp.apple.com/ws/images/common/dowble.list.move.right.gif" alt="left" />
+			<img src="http://ws-asuat01.corp.apple.com/ws/images/common/dowble.list.move.left.gif" alt="right" />
+		</div>
+		<div>
+			 <select multiple id="selected"> 
+				  <option value="name">Project Name</option>
+				  <option value="locale">Locale</option>
+				  <option value="workgroup">Workgroup</option>
+				  <option value="project">Project #</option>
+				  <option value="date">Creation Date</option>
+				  <option value="description">Description</option>
+				  <option value="total-task">Total Tasks</option>
+				  <option value="active-task">Active Tasks</option>
+				  <option value="task-assign-to-you">Tasks Assigned to You</option>
+				  <option value="10-10">Tasks Claimed by You</option>
+				  <option value="11-11">% Translated</option>
+				  <option value="13-13">Total Words</option>
+				  <option value="14-14">Translated Words</option>
+				  <option value="25-25">Project Type</option>
+				  <option value="12-12">% Reviewed</option>
+				  <option value="15-15">Translated Words Details</option>
+				  <option value="16-16">Untranslated Words</option>
+				  <option value="17-17">Due Date</option>
+				  <option value="expected-duration">Expected Duration</option>
+				  <option value="completed-date">Completion Date</option>
+				  <option value="duration">Duration</option>			   
+			 </select>  			
+		</div>
+		<div>
+			<img src="http://ws-asuat01.corp.apple.com/ws/images/common/dowble.list.move.up.gif" alt="up" />
+			<img src="http://ws-asuat01.corp.apple.com/ws/images/common/dowble.list.move.down.gif" alt="down" />
+		</div>
+
+		<button class="dialogbutton default">OK</button>
+		<button class="dialogbutton close">Cancel</button>			
+	</div>
+
+
+<script>
+	(function(){
+
+    function replace(template, obj) {
+        var t, key, reg;
+
+        for (key in obj) {
+            reg = new RegExp('{{' + key + '}}', 'ig');
+            t = (t || template).replace(reg, obj[key]);
+        }
+
+        return t;
+    }
+
+  $('.select-options').find("img").click(function() {  
+
+  	var text=$(this).attr("alt"), $opt2 = $('#selected option:selected');
+
+	switch(text){
+		
+		case "left":
+		{
+		    $('#all option:selected').remove().appendTo('#selected');  
+			break;
+		}
+		case "right":
+		{
+			$opt2.remove().appendTo('#all');
+			break;
+		}
+		case "up":
+		{
+			$opt2.first().prev().before($opt2);
+			break;
+		}
+		case "down":
+		{
+			$opt2.last().next().after($opt2)
+			break;
+		}
+		default:
+		break;
+	}
+   });  	
+
+	$(".close").on("click",function(){
+
+		$(".select-options").hide();
+
+	});
+
+$(".select-options").on("click", ".dialogbutton", function (e) {
+
+        if ($(e.target).text() === "OK") {
+        	var fragment="",headertemplate=$("#header-template").html(),data={};
+
+            $(".select-options").hide();
+
+            //data=$("#selected").find("option");
+           // console.log(data);
+
+            $.each($("#selected").find("option"), function (i, obj) {
+            	//data.push(obj[i],obj.value);
+            	data["header-name"]=$(this).val();
+            	data["header-text"]=$(this).text();
+
+
+            
+
+              fragment += replace(headertemplate, data);
+            });
+			$("#projectgroupsheader").html(fragment);
+        }
+        e.preventDefault();
+});
+	})();
+</script>
